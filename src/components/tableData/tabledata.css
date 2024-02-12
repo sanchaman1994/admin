@@ -1,0 +1,35 @@
+tr {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 75vw;
+	text-align: left;
+	padding-block: 12px;
+	border-bottom: 1px solid #aaa;
+}
+
+td,
+th {
+	width: 30%;
+	flex-wrap: wrap;
+}
+tr td:nth-child(4) {
+	text-transform: capitalize;
+}
+.shrink {
+	display: flex;
+	flex-shrink: 0.5;
+}
+@media (max-width: 1150px) {
+	tr {
+		width: 80vw;
+		overflow-x: scroll;
+	}
+	td:first-child {
+		width: 30px;
+	}
+
+	th:first-child {
+		width: 40px;
+	}
+}

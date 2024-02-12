@@ -1,0 +1,57 @@
+.Dashboard {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.button-group {
+	bottom: 1vh;
+	text-align: center;
+}
+
+button {
+	background-color: #209cee;
+	margin: 6px;
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	border: 1px solid #209cee;
+	color: whitesmoke;
+	font-weight: 300;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: cornflowerblue;
+	border: 1px solid cornflowerblue;
+}
+
+button:disabled {
+	background-color: white;
+	color: #209cee;
+}
+
+.editUser {
+	padding: 8px;
+	margin: 8px;
+	transition: transform 0.3s ease;
+}
+
+.editButton {
+	text-align: center;
+	padding: 12px;
+	background: rgb(7, 81, 165);
+	border-radius: 12px;
+	color: white;
+}
+.editButton:hover {
+	cursor: pointer;
+}
+.editButton:active {
+	transform: scale(0.98);
+}
+input {
+	border: 1px solid rgb(7, 81, 165);
+}
+input:focus {
+	outline: none;
+}

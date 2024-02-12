@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import { Modal, Fade, Backdrop, Box } from "@mui/material";
+import "./tabledata.css";
 
 // eslint-disable-next-line no-unused-vars
 const TableData = ({ user, onDelete, selectUser, checked }) => {
+    const [open, setOpen] = useState(false);
+
     const [userData, setUserData] = useState({
         username: user.name,
         email: user.email,
@@ -18,7 +21,7 @@ const TableData = ({ user, onDelete, selectUser, checked }) => {
         }));
     };
 
-    const [open, setOpen] = useState(false);
+
     const handleOpen = () => {
         setOpen(true);
     };

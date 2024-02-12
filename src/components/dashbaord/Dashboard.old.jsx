@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box } from "@mui/material";
-import Tabledata from "./TableData";
-import Search from "./Search";
+
+import Search from "../search/Search";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { CircularProgress } from "@mui/material";
-import "./styles.css";
+import "./dashboard.css";
+import TableData from "../tableData/TableData";
 
 const Dashboard = () => {
     const [user, setUser] = useState([]);
@@ -107,7 +108,7 @@ const Dashboard = () => {
     };
 
     const handleSelectUser = (userId) => {
-        let arr;
+        let arr = [];
         if (selectCheckbox.includes(userId)) {
             arr = selectCheckbox.filter((user) => {
                 return user !== userId;
@@ -125,6 +126,7 @@ const Dashboard = () => {
         for (let i = 0; i < selectCheckbox.length; i++) {
             handleDeleteUser(selectCheckbox[i]);
         }
+        setLoading(false);
     };
 
     const selectAll = () => {
@@ -142,69 +144,69 @@ const Dashboard = () => {
         setLoading(false);
     };
     return (
-        <div>
-            <Box>
-                <Search searchQuery={search} />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <input
-                                    type="checkbox"
-                                    checked={selectAllUser}
-                                    onClick={selectAll}
+        <Box >
+            <Search searchQuery={search} />
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <input
+                                type="checkbox"
+                                checked={selectAllUser}
+                                onClick={selectAll}
+                            />
+                        </th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th style={{ display: "flex", gap: "10px" }}>
+                            Actions
+                            {
+                                selectCheckbox.length > 0 &&
+                                <DeleteIcon sx={{ color: "red", cursor: "pointer" }} fontSize={"small"} onClick={deleteMultiple} />
+                            }
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {loading ? (
+                        <Box position={"absolute"} top={"30vh"}>
+                            <CircularProgress variant="secondary" />
+                        </Box>
+                    ) : (
+                        rowsToShow.map((val) => {
+                            return (
+                                <TableData
+                                    user={val}
+                                    key={val.id}
+                                    checked={selectCheckbox.includes(val.id)}
+                                    selectUser={() => handleSelectUser(val.id)}
+                                    onDelete={() => handleDeleteUser(val.id)}
                                 />
-                            </th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th style={{ display: "flex", gap: "0.5vw" }}>
-                                Actions
-                                {
-                                    selectCheckbox.length > 0 &&
-                                    <DeleteIcon sx={{ color: "red", cursor: "pointer" }} fontSize={"small"} onClick={deleteMultiple} />
-                                }
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {loading ? (
-                            <Box position={"absolute"} top={"30vh"}>
-                                <CircularProgress variant="secondary" />
-                            </Box>
-                        ) : (
-                            rowsToShow.map((val) => {
-                                return (
-                                    <Tabledata
-                                        user={val}
-                                        key={val.id}
-                                        checked={selectCheckbox.includes(val.id)}
-                                        selectUser={() => handleSelectUser(val.id)}
-                                        onDelete={() => handleDeleteUser(val.id)}
-                                    />
-                                );
-                            })
-                        )}
-                        { }
-                    </tbody>
-                </table>
-                <div className="button-group">
-                    <button onClick={goToFirst} disabled={currentPage === 1}>
-                        {"<<"}
-                    </button>
-                    <button onClick={goBack} disabled={currentPage === 1}>
-                        {"<"}
-                    </button>
-                    {showPageButtons()}
-                    <button onClick={goNext} disabled={currentPage === pages}>
-                        {">"}
-                    </button>
-                    <button onClick={goToLast} disabled={currentPage === pages}>
-                        {">>"}
-                    </button>
-                </div>
-            </Box>
-        </div>
+                            );
+                        })
+                    )}
+                </tbody>
+            </table>
+
+            <div className="button-group">
+                <button onClick={goToFirst} disabled={currentPage === 1}>
+                    {"<<"}
+                </button>
+                <button onClick={goBack} disabled={currentPage === 1}>
+                    {"<"}
+                </button>
+                {showPageButtons()}
+                <button onClick={goNext} disabled={currentPage === pages}>
+                    {">"}
+                </button>
+                <button onClick={goToLast} disabled={currentPage === pages}>
+                    {">>"}
+                </button>
+            </div>
+        </Box>
+
     );
 };
 

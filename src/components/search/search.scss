@@ -1,0 +1,23 @@
+.searchBar {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+	width: 100%;
+	input {
+		padding: 10px;
+		width: 100%;
+	}
+
+	input:focus {
+		outline: none;
+		color: blue;
+	}
+	.status {
+		height: 20px;
+		width: 200px;
+		position: absolute;
+		top: 40vh;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
