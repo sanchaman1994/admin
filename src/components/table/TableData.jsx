@@ -5,7 +5,6 @@ import { Backdrop, Box, Fade, Modal } from "@mui/material";
 import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 
-
 const TableData = ({ user, deleteUser, checked, selectUser, handleChange }) => {
 
     const [open, setOpen] = useState(false);
@@ -22,7 +21,7 @@ const TableData = ({ user, deleteUser, checked, selectUser, handleChange }) => {
         <>
             <tr>
                 <td>
-                    <input type="checkbox" onClick={selectUser} />
+                    <input type="checkbox" onChange={selectUser} checked={checked} />
                 </td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
@@ -33,8 +32,6 @@ const TableData = ({ user, deleteUser, checked, selectUser, handleChange }) => {
                     }} onClick={handleOpen} />
                     <DeleteIcon className="deleteBtn" sx={{ color: "red", cursor: "pointer" }} onClick={() => deleteUser(user.id)} />
                 </td>
-
-
             </tr>
             <Modal
                 aria-labelledby="transition-modal-title"

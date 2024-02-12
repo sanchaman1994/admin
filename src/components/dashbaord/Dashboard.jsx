@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Search from '../search/Search'
 import Table from "../table/Table";
-import Pagination from "../pagination/Pagination";
 import axios from 'axios';
 import "./dashboard.css";
 
@@ -28,7 +27,6 @@ const Dashboard = () => {
         <div className='Dashboard'>
             <Search users={users} setUser={setUser} setLoading={setLoading} fetchUsers={fetchUsers} />
             <Table users={users} setUser={setUser} loading={loading} setLoading={setLoading} />
-            <Pagination />
         </div>
     )
 }

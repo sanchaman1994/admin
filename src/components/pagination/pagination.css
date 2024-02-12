@@ -1,0 +1,89 @@
+.pagination {
+	display: flex;
+	flex-direction: row;
+	height: 100px;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+}
+.button-group {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button {
+	background-color: rgb(7, 81, 165);
+	margin: 6px;
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	border: 1px solid rgb(7, 81, 165);
+	color: whitesmoke;
+	font-weight: 300;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: cornflowerblue;
+	border: 1px solid cornflowerblue;
+}
+
+button:disabled {
+	background-color: white;
+	color: #209cee;
+}
+.AllDeleteBtn {
+	background-color: rgb(233, 30, 30);
+	margin: 6px;
+	height: 32px;
+	width: 128px;
+	border-radius: 20px;
+	border: 1px solid rgb(233, 18, 18);
+	color: whitesmoke;
+	transition: transform 0.3s ease;
+	padding: 6px;
+}
+.AllDeleteBtn:hover {
+	background-color: red;
+	border: none;
+}
+
+.AllDeleteBtn:active {
+	transform: scale(0.98);
+}
+
+@media (max-width: 820px) {
+	.pagination {
+		flex-direction: column;
+		height: 150px;
+	}
+	.button-group {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+	}
+	.AllDeleteBtn {
+		height: 30px;
+		margin-top: 40px;
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 500px) {
+	button {
+		height: 25px;
+		width: 25px;
+	}
+	.button-group {
+		margin-top: 15px;
+		flex-wrap: nowrap;
+	}
+	.AllDeleteBtn {
+		margin-top: 30px;
+		margin-bottom: 10px;
+	}
+	.pagination {
+		align-items: center;
+		justify-content: center;
+	}
+}
