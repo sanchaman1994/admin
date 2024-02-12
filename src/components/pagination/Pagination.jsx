@@ -3,6 +3,7 @@ import "./pagination.css";
 
 const Pagination = ({ setCurrentPage, pages, currentPage, deleteMultiple }) => {
 
+
   const goBack = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
@@ -39,24 +40,30 @@ const Pagination = ({ setCurrentPage, pages, currentPage, deleteMultiple }) => {
     return buttons;
   };
   return (
-    <div className='pagination'>
-      <button className='AllDeleteBtn' onClick={deleteMultiple}>Delete Selected</button>
-      <div className="button-group">
-        <button onClick={goToFirst} disabled={currentPage === 1}>
-          {"<<"}
-        </button>
-        <button onClick={goBack} disabled={currentPage === 1}>
-          {"<"}
-        </button>
-        {showPageButtons()}
-        <button onClick={goNext} disabled={currentPage === pages}>
-          {">"}
-        </button>
-        <button onClick={goToLast} disabled={currentPage === pages}>
-          {">>"}
-        </button>
-      </div>
-    </div>
+
+    <>
+      {pages > 1 &&
+        <div className='pagination'>
+          <button className='AllDeleteBtn' onClick={deleteMultiple}>Delete Selected</button>
+          <div className="button-group">
+            <button onClick={goToFirst} disabled={currentPage === 1}>
+              {"<<"}
+            </button>
+            <button onClick={goBack} disabled={currentPage === 1}>
+              {"<"}
+            </button>
+            {showPageButtons()}
+            <button onClick={goNext} disabled={currentPage === pages}>
+              {">"}
+            </button>
+            <button onClick={goToLast} disabled={currentPage === pages}>
+              {">>"}
+            </button>
+          </div>
+        </div>
+      }
+    </>
+
   )
 }
 

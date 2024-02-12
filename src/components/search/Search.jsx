@@ -50,7 +50,7 @@ const Search = ({ users, setLoading, setUser, fetchUsers }) => {
                 onChange={search}
             />
             <div className="status">
-                {status.length > 0 ? <p>{status}</p> : null}
+                {status.length > 0 ? <p className="red">{status}</p> : null}
             </div>
         </div>
     );

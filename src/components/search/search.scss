@@ -1,6 +1,7 @@
 .searchBar {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	margin-top: 1rem;
 	width: 100%;
 	input {
@@ -12,12 +13,15 @@
 		outline: none;
 		color: blue;
 	}
+	.red {
+		color: red;
+	}
 	.status {
-		height: 20px;
-		width: 200px;
-		position: absolute;
-		top: 40vh;
-		left: 50%;
-		transform: translateX(-50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		margin: 20px 0;
 	}
 }
